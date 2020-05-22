@@ -1,7 +1,4 @@
-<h2>Create New Work</h2>
-
 <% if @work.errors.any? %>
-  <p>Oops! Something went wrong with adding a new work:</p>
   <ul>
     <% @work.errors.each do |column, message| %>
       <li>
@@ -9,8 +6,9 @@
       </li>
     <% end %>
   </ul>
-  <p>Please try again: </p>
 <% end %>
+
+<h2>Create New Work</h2>
 
 <%= form_with model: @work do |f| %>
 

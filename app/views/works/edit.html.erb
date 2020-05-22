@@ -1,0 +1,31 @@
+<% if @work.errors.any? %>
+  <ul>
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> field <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2>Edit This <%=@work.category%></h2>
+
+<%= form_with model: @work do |f| %>
+
+  <%= f.label :category %>
+  <%= f.select :category, ['album', 'book', 'movie'] %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.submit "Update Work"%>
+<% end %>

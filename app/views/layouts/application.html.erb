@@ -11,14 +11,14 @@
 
   <body>
 
-    <section class="flash-msg__section">
+      <section class="flash-msg__section">
       <% flash.each do |name, message| %>
         <strong class="<%= name %>">
           <%= message %>
         </strong>
       <% end %>
     </section>
-
+    
     <%= yield %>
   </body>
 </html>
