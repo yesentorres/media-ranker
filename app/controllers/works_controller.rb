@@ -12,7 +12,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.nil?
-      head :not_found
+      render_not_found
       return
     end
   end
@@ -39,7 +39,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.nil?
-      head :not_found
+      render_not_found
       return
     end
   end
@@ -48,7 +48,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.nil?
-      head :not_found
+      render_not_found
       return
     elsif @work.update(work_params)
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
@@ -65,7 +65,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.nil?
-      head :not_found
+      render_not_found
       return
     end 
 
