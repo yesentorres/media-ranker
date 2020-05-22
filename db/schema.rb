@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_224926) do
+ActiveRecord::Schema.define(version: 2020_05_22_214402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "vote_id"
+    t.index ["vote_id"], name: "index_users_on_vote_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_05_21_224926) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "vote_id"
+    t.index ["vote_id"], name: "index_works_on_vote_id"
   end
 
 end
