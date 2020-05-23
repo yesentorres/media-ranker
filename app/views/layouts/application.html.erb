@@ -14,6 +14,13 @@
       <%=link_to "Home", root_path%>
       <%=link_to "Works", works_path%>
       <%=link_to "Users", users_path%>
+      <% if session[:user_id].nil? %>
+        <%=link_to "Login", login_path%>
+      <% else %>
+        <% current_user = User.find_by(id: session[:user_id]) %>
+        <%=link_to "Logged in as  #{current_user.name}", user_path(current_user)%>
+        <%=link_to "Log Out", logout_path, method: :post %>
+      <% end %>
 
       <section class="flash-msg__section">
       <% flash.each do |name, message| %>
