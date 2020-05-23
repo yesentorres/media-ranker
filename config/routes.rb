@@ -5,8 +5,11 @@ Rails.application.routes.draw do
 
   resources :works
 
+  post "works/:id/upvote", to: "votes#upvote", as: "upvote"
+
   resources :users, only: [:index, :show]
 
-  # custom path
-  post "works/:id/upvote", to: "votes#upvote", as: "upvote"
+  get "/login", to: "users#login_form", as: "login"
+  post "/login", to: "users#login"
+  post "/logout", to: "users#logout", as: "logout"
 end

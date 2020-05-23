@@ -12,6 +12,39 @@ class UsersController < ApplicationController
       return
     end
   end
+
+  def login_form
+    @user = User.new 
+  end 
+
+  def login 
+    username = params[:user][:name] # get the name the user entered
+    found_user = User.find_by(name: username) # search for that name in the User table
+
+    if !found_user.nil?
+      # an existing user's id gets logged in session
+      session[:user_id] = found_user.id
+      flash[:success] = "Successfully logged in as existing user #{username}"
+    else
+      # new user gets created and then logged to session 
+      @user = User.create(name: username)
+
+      if @user.save 
+        session[:user_id] = @user.id
+        flash[:success] = "Successfully created new user #{username} with ID #{@user.id}"
+        redirect_to root_path
+        return
+      else
+        flash.now[:error] = "A problem occured: Cout not log in"
+        render :login_form
+        return
+      end 
+    end
+
+    redirect_to root_path
+    return
+  end 
+  
 end
 
 private
