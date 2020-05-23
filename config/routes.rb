@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
+  # custom path
+  post "works/:id/upvote", to: "votes#upvote", as: "upvote"
 end
