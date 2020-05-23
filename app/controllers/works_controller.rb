@@ -75,6 +75,10 @@ class WorksController < ApplicationController
     return
   end
 
+  def upvote
+    @work = Work.find_by(id: params[:id])
+  end 
+
 end
 
 private
