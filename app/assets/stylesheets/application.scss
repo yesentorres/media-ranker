@@ -34,6 +34,10 @@ body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
 }
 
+main {
+  padding: 2rem;
+}
+
 // Header
 .app-header__header {
   max-width: 100%;
@@ -89,4 +93,43 @@ body, h1, h2, h3, h4, h5 {
   background-color: #26A69A;
   color: white;
   border-color: #26A69A;
+}
+
+// Alerts
+
+.alert__container {
+  margin: 2rem 0 1rem 0;
+}
+
+.alert {
+  margin: 0;
+}
+
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+// Typography
+a, h2, h3 {
+  color: #26A69A;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+// Error
+
+.error {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
 }
