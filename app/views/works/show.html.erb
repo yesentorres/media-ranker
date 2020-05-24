@@ -21,9 +21,9 @@
 
 <h2> <%= @work.votes.length%> Votes for this <%= @work.category.capitalize%> </h2>
 
-<% vote_collection = @work.votes%>
+<% work_votes = @work.votes%>
 
-<% vote_collection.each do |vote| %>
+<% work_votes.each do |vote| %>
   <% voter = User.find_by(id: vote.user_id) %>
   <p> <%= link_to "#{voter.name}", user_path(voter.id) %>, <%= vote.created_at %></p>
 <% end %>

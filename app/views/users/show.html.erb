@@ -1,3 +1,12 @@
 <h2>User Summary: <%= @user.name %> </h2>
 
 <p>Joined site <%= @user.created_at %></p>
+
+<h2> Votes </h2>
+
+<% user_votes = @user.votes%>
+
+<% user_votes.each do |vote| %>
+  <% work = Work.find_by(id: vote.work_id) %>
+  <p> <%= link_to "#{work.title}", user_path(work.id) %>, <%= work.creator %>, <%= work.publication_year %>, <%= work.category %>, <%= vote.created_at %></p>
+<% end %>
