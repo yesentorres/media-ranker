@@ -4,4 +4,5 @@ class Vote < ApplicationRecord
 
   # ensures user cannot upvote a work more than once
   validates :user, uniqueness: { scope: :work, message: "has already voted for this work" }
+
 end
