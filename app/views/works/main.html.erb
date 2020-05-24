@@ -1,7 +1,43 @@
 <h1>Media Spotlight</h1>
 
-<h1>Top Movies</h1>
+<% works = Work.all %>
+
+
+<h1>Top Albums</h1>
+
+<% albums = works.select { |work| work.category == "album" }%>
+<% if albums.length == 0 %>
+  <p> No albums added yet </p>
+<% end %>
+<% albums_sorted = albums.sort_by {|album| -album.votes.count}%>
+
+<% albums_sorted.each do |album|%>
+  <p><%=link_to "#{album.title}", work_path(album.id)%> by <%=album.creator%></p>
+  <p><%=album.votes.length%> votes</p>
+<% end %>
 
 <h1>Top Books</h1>
 
-<h1>Top Albums</h1>
+<% books = works.select { |work| work.category == "book" }%>
+<% if books.length == 0 %>
+  <p> No books added yet </p>
+<% end %>
+<% books_sorted = books.sort_by {|book| -book.votes.count}%>
+
+<% books_sorted.each do |book|%>
+  <p><%=link_to "#{book.title}", work_path(book.id)%> by <%=book.creator%></p>
+  <p><%=book.votes.length%> votes</p>
+<% end %>
+
+<h1>Top Movies</h1>
+
+<% movies = works.select { |work| work.category == "movie" }%>
+<% if movies.length == 0 %>
+  <p> No movies added yet </p>
+<% end %>
+<% movies_sorted = movies.sort_by {|movie| -movie.votes.count}%>
+
+<% movies_sorted.each do |movie|%>
+  <p><%=link_to "#{book.title}", work_path(book.id)%> by <%=book.creator%></p>
+  <p><%=book.votes.length%> votes</p>
+<% end %>
