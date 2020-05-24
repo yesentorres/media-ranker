@@ -1,8 +1,7 @@
-<h1>Media Spotlight</h1>
+<h2> Media Spotlight: <%= Work.spotlight.title%> by <%= Work.spotlight.creator%> </h2>
+<h3> <%= Work.spotlight.votes.length%> votes - <%= Work.spotlight.description%> </h3>
 
-<% works = Work.all %>
-
-
+<% works = Work.all%>
 <h1>Top Albums</h1>
 
 <% albums = works.select { |work| work.category == "album" }%>

@@ -4,11 +4,11 @@ class Work < ApplicationRecord
 
   has_many :votes, dependent: :destroy
 
-  def sort(category)
+  def self.abcd(category)
     # assumption: we can expect a user will never assign a work to a cateogry other than the ones listed below 
     # since work and edit views use the select element to pick a category
 
-    works_list = Works.all 
+    works_list = self.all 
 
     case category 
       when "album"
@@ -23,5 +23,18 @@ class Work < ApplicationRecord
       end 
 
   end
+
+  def self.spotlight
+
+    works_list = self.all 
+
+    vote_counts = works_list.max_by{ |work| work.votes.length}
+
+    spotlight_work = vote_counts
+
+    return spotlight_work
+
+
+  end 
 
 end
