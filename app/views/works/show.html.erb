@@ -8,22 +8,44 @@
   </ul>
 <% end %>
 
-<h2><%= @work.title %> </h2>
+<section>
+  <h2><%= @work.title %> </h2>
 
-<p>Created by: <%= @work.creator %></p>
-<p>Published: <%= @work.publication_year %></p>
-<p><%= @work.description %></p>
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published: <%= @work.publication_year %></p>
+  <p><%= @work.description %></p>
 
-<%= link_to "Edit", edit_work_path%>
-<%= link_to "Delete", work_path(@work), method: :delete , data: {confirm: "Are you sure?"}%>
-<%= link_to "Upvote", upvote_path(@work.id), method: :post %>
+  <section>
+    <%= link_to "Back to media ranks", root_path, class: "btn btn-primary"%>
+    <%= link_to "Edit", edit_work_path, class: "btn btn-primary"%>
+    <%= link_to "Upvote", upvote_path(@work.id), method: :post, class: "btn btn-primary" %>
+    <%= link_to "Delete", work_path(@work), method: :delete , data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
+  </section>
+</section>
 
+<section class="works-votes__container">
+  <h3 class="works-votes__header"> <%= @work.votes.length%> Votes for this <%= @work.category.capitalize%> </h3>
 
-<h2> <%= @work.votes.length%> Votes for this <%= @work.category.capitalize%> </h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% work_votes = @work.votes%>
 
-<% work_votes = @work.votes%>
+      <% work_votes.each do |vote| %>
+        <% voter = User.find_by(id: vote.user_id) %>
+        <tr> 
+          <td><%= link_to "#{voter.name}", user_path(voter.id) %></td>
+          <td><%= vote.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
 
-<% work_votes.each do |vote| %>
-  <% voter = User.find_by(id: vote.user_id) %>
-  <p> <%= link_to "#{voter.name}", user_path(voter.id) %>, <%= vote.created_at %></p>
-<% end %>
+  </table>
+
+</section>

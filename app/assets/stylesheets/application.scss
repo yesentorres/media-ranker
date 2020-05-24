@@ -110,6 +110,10 @@ h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
 
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
 // Error
 
 .alert__container {
@@ -149,4 +153,12 @@ h1, h2, h3, h4, h5 {
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
+}
+
+.works-votes__container {
+  margin-top: 2rem;
+}
+
+.works-votes__header {
+  color: black;
 }
