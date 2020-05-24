@@ -58,6 +58,6 @@ end
 private
 
 def user_params
-  return params.require(:user).permit(:name, vote_ids: [])
+  return params.require(:user).permit(:name)
 end
 
