@@ -8,5 +8,5 @@
 
 <% user_votes.each do |vote| %>
   <% work = Work.find_by(id: vote.work_id) %>
-  <p> <%= link_to "#{work.title}", user_path(work.id) %>, <%= work.creator %>, <%= work.publication_year %>, <%= work.category %>, <%= vote.created_at %></p>
+  <p> <%= link_to "#{work.title}", work_path(work.id) %>, <%= work.creator %>, <%= work.publication_year %>, <%= work.category %>, <%= vote.created_at %></p>
 <% end %>
