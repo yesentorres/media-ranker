@@ -11,18 +11,52 @@
 
   <body>
 
-      <%=link_to "Home", root_path%>
-      <%=link_to "Works", works_path%>
-      <%=link_to "Users", users_path%>
-      <% if session[:user_id].nil? %>
-        <%=link_to "Login", login_path%>
-      <% else %>
-        <% current_user = User.find_by(id: session[:user_id]) %>
-        <%=link_to "Logged in as  #{current_user.name}", user_path(current_user)%>
-        <%=link_to "Log Out", logout_path, method: :post %>
-      <% end %>
+  <header class="app-header__header">
 
-      <section class="flash-msg__section">
+      <h1>
+        <a href="/">Media Ranker</a>
+        <small>Ranking the Best of Everything</small>
+      </h1>
+
+      <nav class="app-header__nav">
+
+        <ul class="nav app-header__site-nav-container">
+          <li class="nav-item app-header__nav_item">
+            <%=link_to "Home", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to "View all media", works_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to "Add a new work", new_work_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to "View all users", users_path, class: "nav-link"%>
+          </li>
+        </ul>
+
+        <ul class="nav app-header__user-nav-container">
+          <% if session[:user_id].nil? %>
+            <li class="nav-item app-header__nav_item">
+              <%=link_to "Login", login_path, class: "btn btn-primary"%>
+            </li>
+          <% else %>
+            <% current_user = User.find_by(id: session[:user_id]) %>
+            <li class="nav-item app-header__nav_item">
+              <%=link_to "Logged in as  #{current_user.name}", user_path(current_user), class: "btn btn-primary"%>
+            </li>
+            <li class="nav-item app-header__nav_item">
+              <%=link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %>
+            </li>
+          <% end %>
+        </ul>
+
+      </nav>
+    </header>
+
+
+    
+    <section class="flash-msg__section">
       <% flash.each do |name, message| %>
         <strong class="<%= name %>">
           <%= message %>
@@ -31,5 +65,6 @@
     </section>
     
     <%= yield %>
+
   </body>
 </html>
