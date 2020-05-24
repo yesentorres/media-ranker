@@ -2,11 +2,38 @@
 
 <p>Joined site <%= @user.created_at %></p>
 
-<h2> Votes </h2>
+<section class="user-votes__container">
+  <h3 class="user-votes__header">Votes</h3>
+</section>
 
-<% user_votes = @user.votes%>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Media Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted On</th>
+    </tr>
+  </thead>
 
-<% user_votes.each do |vote| %>
-  <% work = Work.find_by(id: vote.work_id) %>
-  <p> <%= link_to "#{work.title}", work_path(work.id) %>, <%= work.creator %>, <%= work.publication_year %>, <%= work.category %>, <%= vote.created_at %></p>
-<% end %>
+  <tbody>
+    <% user_votes = @user.votes%>
+
+    <% user_votes.each do |vote| %>
+    <% work = Work.find_by(id: vote.work_id) %>
+      <tr>
+        <td><%= link_to "#{work.title}", work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= work.category %></td>
+        <td><%= vote.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a class="btn btn-secondary" href="/users">See all Users</a>
+<a class="btn btn-primary" href="/">Back to Media List</a>
+
+
