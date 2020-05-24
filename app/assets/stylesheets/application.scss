@@ -95,7 +95,22 @@ main {
   border-color: #26A69A;
 }
 
-// Alerts
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+// Typography
+a, h2, h3 {
+  color: #26A69A;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+// Error
 
 .alert__container {
   margin: 2rem 0 1rem 0;
@@ -111,17 +126,6 @@ main {
   border-color: #ffeeba;
 }
 
-// Typography
-a, h2, h3 {
-  color: #26A69A;
-}
-
-h1, h2, h3, h4, h5 {
-  font-weight: bold;
-}
-
-// Error
-
 .error {
   color: #856404;
   background-color: #fff3cd;
@@ -132,4 +136,17 @@ h1, h2, h3, h4, h5 {
   color: #155724;
   background-color: #d4edda;
   border-color: #c3e6cb;
+}
+
+// Table
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
 }
