@@ -35,7 +35,7 @@ class UsersController < ApplicationController
         redirect_to root_path
         return
       else
-        flash.now[:error] = "A problem occured: Cout not log in"
+        flash.now[:error] = "A problem occured: Could not log in"
         render :login_form
         return
       end 

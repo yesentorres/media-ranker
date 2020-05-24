@@ -79,18 +79,22 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if session[:user_id].nil?
-      flash[:errors] = "A problem occured: You must log in to do that"
+      flash[:error] = "A problem occured: You must log in to do that"
       redirect_back fallback_location: work_path(@work)
       return
     else 
-      new_vote = Vote.new(user_id: session[:user_id], work_id: @work.id)
-      if new_vote.save
+      @vote = Vote.create(user_id: session[:user_id], work_id: @work.id)
+
+      if @vote.save
         flash[:success] = "Successfully upvoted!"
         redirect_back fallback_location: work_path(@work)
         return 
       else 
-        flash[:error] = "Could not upvote"
-        redirect_back fallback_location: work_path(@work)
+        flash.now[:error] = "A problem occured: Could not upvote"
+        # pass the vote errors to the views
+        @invalid_vote_message = @vote.errors.messages
+
+        render :show
         return
       end
     end 

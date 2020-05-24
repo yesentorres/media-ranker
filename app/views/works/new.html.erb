@@ -8,6 +8,7 @@
   </ul>
 <% end %>
 
+<%= @vote.errors.messages %>
 <h2>Create New Work</h2>
 
 <%= form_with model: @work do |f| %>
