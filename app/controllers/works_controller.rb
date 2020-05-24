@@ -91,7 +91,7 @@ class WorksController < ApplicationController
         return 
       else 
         flash.now[:error] = "A problem occured: Could not upvote"
-        # pass the vote errors to the views
+        # create instance variable to pass the vote errors to the views
         @invalid_vote_message = @vote.errors.messages
 
         render :show
