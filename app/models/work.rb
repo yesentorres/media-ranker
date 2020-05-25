@@ -4,25 +4,29 @@ class Work < ApplicationRecord
 
   has_many :votes, dependent: :destroy
 
-  def self.abcd(category)
+  def self.sort_works(category)
     # assumption: we can expect a user will never assign a work to a cateogry other than the ones listed below 
     # since work and edit views use the select element to pick a category
 
-    works_list = self.all 
-
+    # categorize works 
     case category 
       when "album"
-        albums = works_list.select { |work| work.category == "album" }
-        return albums
+        categorized_works = self.where(category: "album")
       when "book"
-        books = works_list.select { |work| work.category == "book" }
-        return books  
+        categorized_works = self.where(category: "book")
       when "movie"
-        movies = works_list.select { |work| work.category == "movie" }
-        return movies
-      end 
+        categorized_works = self.where(category: "movie")
+    end 
 
-  end
+    # sort in ascending order by vote count
+    if categorized_works.length == 0
+      return "No #{category}s added yet !"
+    else 
+      return categorized_works.sort_by {|categorized_work| -categorized_work.votes.count}
+    end
+
+  end 
+
 
   def self.spotlight
 

@@ -1,30 +1,94 @@
 <h2>List of Works</h2>
 
-<h4> Works </h4>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Votes</th>
-      <th>Title</th>
-      <th>Created By</th>
-      <th>Published</th>
-      <th>Upvote</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @works.each do |work|  %>
+<h4>Albums</h4>
+<% albums = Work.sort_works("album")%>
+<% if albums.instance_of? String %>
+  <p><%= albums %></p>
+<% else %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= work.votes.count%></td>
-        <td><%= link_to "#{work.title}", work_path(work.id)%></td>
-        <td><%= work.creator%></td>
-        <td> <%= work.publication_year%></td>
-        <td><%= link_to "Upvote", upvote_path(work.id), method: :post, class: "btn btn-primary"%></td>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% albums.each do |album|  %>
+        <tr>
+          <td><%= album.votes.count%></td>
+          <td><%= link_to "#{album.title}", work_path(album.id)%></td>
+          <td><%= album.creator%></td>
+          <td> <%= album.publication_year%></td>
+          <td><%= link_to "Upvote", upvote_path(album.id), method: :post, class: "btn btn-primary"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<h4>Books</h4>
+<% books = Work.sort_works("book")%>
+<% if books.instance_of? String %>
+  <p><%= books %></p>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% books.each do |book|  %>
+        <tr>
+          <td><%= book.votes.count%></td>
+          <td><%= link_to "#{book.title}", work_path(book.id)%></td>
+          <td><%= book.creator%></td>
+          <td> <%= book.publication_year%></td>
+          <td><%= link_to "Upvote", upvote_path(book.id), method: :post, class: "btn btn-primary"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<h4>Movies</h4>
+<% movies = Work.sort_works("movie")%>
+<% if movies.instance_of? String %>
+  <p><%= movies %></p>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% movies.each do |movie|  %>
+        <tr>
+          <td><%= movie.votes.count%></td>
+          <td><%= link_to "#{movie.title}", work_path(movie.id)%></td>
+          <td><%= movie.creator%></td>
+          <td> <%= movie.publication_year%></td>
+          <td><%= link_to "Upvote", upvote_path(movie.id), method: :post, class: "btn btn-primary"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <a class="btn btn-secondary" href="/">View top media</a>
 <a class="btn btn-primary" href="/works/new">Add a new work</a>
