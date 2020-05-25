@@ -44,7 +44,7 @@
         <% voter = User.find_by(id: vote.user_id) %>
         <tr> 
           <td><%= link_to "#{voter.name}", user_path(voter.id) %></td>
-          <td><%= vote.created_at %></td>
+          <td><%= readable_date(vote.created_at) %></td>
         </tr>
       <% end %>
     </tbody>

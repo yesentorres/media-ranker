@@ -1,9 +1,9 @@
  <% if @user.errors.any? %>
  <div class = "error-reason"> 
-    <ul>
+    <ul class ="error-reason-message">
       <% @user.errors.each do |column, message| %>
         <li>
-          <strong><%= column %></strong>: <%= message %>
+          <%= column %>: <%= message %>
         </li>
       <% end %>
     </ul>

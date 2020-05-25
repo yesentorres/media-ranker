@@ -152,13 +152,17 @@ p {
 }
 
 .error-reason {
-  margin-top: 0;
   width: 100%;
   display:inline-block;
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
 }
+
+.error-reason-message {
+  margin-left: 2rem;
+}
+
 // Table
 
 .table {
