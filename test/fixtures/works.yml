@@ -1,0 +1,18 @@
+thewall:
+  title: The Wall
+  category: album
+  creator: Pink Floyd
+  publication_year: 1979
+  description: a great album
+ratatouille:
+  title: Ratatouille
+  category: movie
+  creator: Pixar
+  publication_year: 2007
+  description: best pixar movie of all time
+flipped:
+  title: Flipped
+  category: book
+  creator: Wendelin Van Draanen
+  publication_year: 2001
+  description: young adult fiction
