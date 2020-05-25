@@ -27,7 +27,19 @@ class Work < ApplicationRecord
 
   def self.spotlight
     works_list = self.all 
-    return works_list.max_by{ |work| work.votes.length}
+
+    if works_list.length == 0 
+      return "No media added yet!"
+    end
+
+    spotlight = works_list.max_by{ |work| work.votes.length}
+
+    if spotlight.votes.length == 0 
+      return "No votes added yet!"
+    else 
+      return spotlight 
+    end
+
   end 
 
 end
