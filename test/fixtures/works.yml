@@ -4,6 +4,18 @@ thewall:
   creator: Pink Floyd
   publication_year: 1979
   description: a great album
+hunkydory:
+  title: Hunky Dory
+  category: album
+  creator: David Bowie
+  publication_year: 1971
+  description: another great album
+thesuburbs:
+  title: The Suburbs
+  category: album
+  creator: Arcade Fire
+  publication_year: 2010
+  description: yet another great album
 ratatouille:
   title: Ratatouille
   category: movie

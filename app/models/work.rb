@@ -18,7 +18,7 @@ class Work < ApplicationRecord
 
     # sort in descending order by vote count
     if categorized_works.length == 0
-      return "No #{category}s added yet !"
+      return "No #{category}s added yet!"
     else 
       return categorized_works.sort_by {|categorized_work| -categorized_work.votes.count}
     end
