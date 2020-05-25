@@ -24,7 +24,6 @@ class Work < ApplicationRecord
     end
   end 
 
-
   def self.spotlight
     works_list = self.all 
 
@@ -39,7 +38,6 @@ class Work < ApplicationRecord
     else 
       return spotlight 
     end
-
   end 
 
 end
