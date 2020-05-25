@@ -1,5 +1,14 @@
-<h2> Media Spotlight: <%= Work.spotlight.title%> by <%= Work.spotlight.creator%> </h2>
-<h3> <%= Work.spotlight.votes.length%> votes - <%= Work.spotlight.description%> </h3>
+<section class="spotlight">
+  <h2 class="spotlight__header">
+    <span class="spotlight__header--prefix"> Media Spotlight: </span>
+     <%= link_to "#{Work.spotlight.title}", work_path(Work.spotlight.id), class: "spotlight__link-to" %> by <%= Work.spotlight.creator%>
+  </h2>
+  <p class="spotlight__description"> 
+     <%= Work.spotlight.votes.length%> votes - <%= Work.spotlight.description%>
+  </p>
+</section>
+
+<hr class="root__hr" />
 
 <% works = Work.all%>
 <h1>Top Albums</h1>

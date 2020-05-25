@@ -170,3 +170,28 @@ p {
 .user-votes__header {
   color: black;
 }
+
+.spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.spotlight__header {
+  color: #26A69A;
+}
+
+.spotlight__description {
+  margin-bottom: 0;
+}
+
+.root__hr {
+  margin: 0px auto 3rem auto;
+  color: #EEEEEE;
+}
+
+.spotlight__header--prefix {
+  color: #424242;
+}
+
+.spotlight__link-to {
+  border-bottom: 2px solid;
+}
