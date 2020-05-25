@@ -1,7 +1,37 @@
 require "test_helper"
 
 describe User do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+
+  describe 'validations' do
+    it 'is valid when name is present' do
+      # Act
+      result = users(:toby).valid?
+
+      # Assert
+      expect(result).must_equal true
+    end
+
+    it 'is invalid without a name' do
+      # Arrange
+      invalid_user = User.new(name: "")
+    
+      # Act
+      result = invalid_user.valid?
+    
+      # Assert
+      expect(result).must_equal false
+      expect(invalid_user.errors.messages).must_include :name
+    end
+  end
+
+  describe 'relations' do
+    it "can have many votes" do
+      # Arrange 
+      v1 = Vote.create(user_id: users(:toby).id, work_id: works(:thewall).id)
+      v2 = Vote.create(user_id: users(:toby).id, work_id: works(:ratatouille).id)
+
+      # Assert
+      expect(users(:toby).votes.length).must_equal 2
+    end
+  end
 end
