@@ -24,7 +24,6 @@ class Work < ApplicationRecord
     else 
       return categorized_works.sort_by {|categorized_work| -categorized_work.votes.count}
     end
-
   end 
 
 
