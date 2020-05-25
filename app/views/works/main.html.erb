@@ -24,6 +24,25 @@
   <% movies = Work.sort_works("movie")%>
 
   <section class="top-ten__list-container">
+    <h2 class="top-ten__header"> Top Movies </h2>
+    <% if movies.instance_of? String %>
+      <p><%= movies %></p>
+    <% else %>
+      <ul class="list-group top-ten__list">
+        <% movies[0..9].each do |movie|%>
+          <li class="list-group-item">
+            <h4>
+              <%=link_to "#{movie.title}", work_path(movie.id)%> 
+              <small > by <%=movie.creator%></small>
+            </h4>
+            <p><%=movie.votes.length%> votes</p>
+          <li>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
+
+  <section class="top-ten__list-container">
     <h2 class="top-ten__header"> Top Albums </h2>
     <% if albums.instance_of? String %>
       <p><%= albums %></p>
@@ -55,25 +74,6 @@
               <small > by <%=book.creator%></small>
             </h4>
             <p><%=book.votes.length%> votes</p>
-          <li>
-        <% end %>
-      </ul>
-    <% end %>
-  </section>
-
-  <section class="top-ten__list-container">
-    <h2 class="top-ten__header"> Top Movies </h2>
-    <% if movies.instance_of? String %>
-      <p><%= movies %></p>
-    <% else %>
-      <ul class="list-group top-ten__list">
-        <% movies[0..9].each do |movie|%>
-          <li class="list-group-item">
-            <h4>
-              <%=link_to "#{movie.title}", work_path(movie.id)%> 
-              <small > by <%=movie.creator%></small>
-            </h4>
-            <p><%=movie.votes.length%> votes</p>
           <li>
         <% end %>
       </ul>
