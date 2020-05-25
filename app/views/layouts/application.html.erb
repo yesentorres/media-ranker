@@ -50,16 +50,13 @@
       </nav>
     </header>
 
-    <section class="flash-msg__section">
-      <% flash.each do |name, message| %>
-        <strong class="<%= name %>">
-          <%= message %>
-        </strong>
-      <% end %>
-    </section>
-    
-    <main>
-      <%= yield %>
-    </main>
+    <% flash.each do |name, message| %>
+      <span class="<%= name %>">
+        <p class = "<%= name %>-message"> <%= message %> </p>
+      </span>
+    <% end %>
+
+    <%= yield %>
+
   </body>
 </html>

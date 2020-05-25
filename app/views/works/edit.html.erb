@@ -1,5 +1,5 @@
  <% if @work.errors.any? %>
- <div> 
+ <div class = "error-reason"> 
     <ul>
       <% @work.errors.each do |column, message| %>
         <li>
@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-
+<main>
 <h2>Edit This <%=@work.category.capitalize%></h2>
 
 <%= form_with model: @work do |f| %>
@@ -44,5 +44,6 @@
   <div class="form-group">
     <%= f.submit "Update Work", class: "btn btn-primary" %>
   </div>
-  
 <% end %>
+</main>
+

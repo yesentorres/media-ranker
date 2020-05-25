@@ -18,6 +18,9 @@
 @import "**/*";
 
 // Body 
+// * {
+//   border: 1px solid black;
+// }
 
 body {
   margin: 0;
@@ -115,34 +118,47 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-// Error
-
-.alert__container {
-  margin: 2rem 0 1rem 0;
-}
-
-.alert {
-  margin: 0;
-}
-
-.alert-warning {
-  color: #856404;
-  background-color: #fff3cd;
-  border-color: #ffeeba;
-}
-
-.error {
-  color: #856404;
-  background-color: #fff3cd;
-  border-color: #ffeeba;
-}
+// Flash Message
 
 .success {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  //height: 100%;
+  width: 100%;
+  display:inline-block;
   color: #155724;
   background-color: #d4edda;
   border-color: #c3e6cb;
 }
 
+.success-message {
+  padding-left: 2rem;
+  padding-top: 1rem;
+}
+
+.error {
+  margin-top: 1rem;
+  //height: 100%;
+  width: 100%;
+  display:inline-block;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.error-message {
+  padding-left: 2rem;
+  padding-top: 1rem;
+}
+
+.error-reason {
+  margin-top: 0;
+  width: 100%;
+  display:inline-block;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
 // Table
 
 .table {
