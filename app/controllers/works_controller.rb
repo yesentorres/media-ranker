@@ -1,5 +1,7 @@
 class WorksController < ApplicationController
 
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
+
   def main
     @works = Work.all
   end 
@@ -9,8 +11,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       render_not_found
       return
@@ -36,8 +36,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       render_not_found
       return
@@ -45,8 +43,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       render_not_found
       return
@@ -62,8 +58,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       render_not_found
       return
@@ -76,8 +70,6 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    @work = Work.find_by(id: params[:id])
-
     if session[:user_id].nil?
       flash[:error] = "A problem occured: You must log in to do that"
       redirect_back fallback_location: work_path(@work)
@@ -103,6 +95,10 @@ class WorksController < ApplicationController
 end
 
 private
+
+def find_work
+  @work = Work.find_by(id: params[:id])
+end 
 
 def work_params
   return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
