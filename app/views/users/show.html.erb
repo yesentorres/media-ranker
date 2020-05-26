@@ -1,41 +1,41 @@
 <main>
-<h2>User Summary: <%= @user.name %> </h2>
+  <h2>User Summary: <%= @user.name %> </h2>
 
-<p>Joined site <%= readable_date(@user.created_at) %></p>
+  <p>Joined site <%= readable_date(@user.created_at) %></p>
 
-<section class="user-votes__container">
-  <h3 class="user-votes__header">Votes</h3>
-</section>
+  <section class="user-votes__container">
+    <h3 class="user-votes__header">Votes</h3>
+  </section>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Media Title</th>
-      <th>Created By</th>
-      <th>Published</th>
-      <th>Category</th>
-      <th>Voted On</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% user_votes = @user.votes%>
-
-    <% user_votes.each do |vote| %>
-    <% work = Work.find_by(id: vote.work_id) %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= link_to "#{work.title}", work_path(work.id) %></td>
-        <td><%= work.creator %></td>
-        <td><%= work.publication_year %></td>
-        <td><%= work.category %></td>
-        <td><%= readable_date(vote.created_at) %></td>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<a class="btn btn-secondary" href="/users">See all Users</a>
-<a class="btn btn-primary" href="/">Back to Media List</a>
+    <tbody>
+      <% user_votes = @user.votes%>
+
+      <% user_votes.each do |vote| %>
+      <% work = Work.find_by(id: vote.work_id) %>
+        <tr>
+          <td><%= link_to "#{work.title}", work_path(work.id) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= work.category %></td>
+          <td><%= readable_date(vote.created_at) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <a class="btn btn-secondary" href="/users">See all Users</a>
+  <a class="btn btn-primary" href="/">Back to Media List</a>
 </main>
 
 

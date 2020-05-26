@@ -1,83 +1,83 @@
 <main>
-<section class="spotlight">
-  <%if Work.spotlight.instance_of? String%>
-    <h2 class="spotlight__header">
-      <% media_error = Work.spotlight %>
-      <span> <%= media_error%> </span>
-    </h2>
-  <% else %>
-    <h2 class="spotlight__header">
-      <span class="spotlight__header--prefix"> Media Spotlight: </span>
-      <%= link_to "#{Work.spotlight.title}", work_path(Work.spotlight.id), class: "spotlight__link-to" %> by <%= Work.spotlight.creator%>
-    </h2>
-    <p class="spotlight__description"> 
-      <%= Work.spotlight.votes.length%> votes - <%= Work.spotlight.description%>
-    </p>
-  <% end %>
-</section>
-
-<hr class="root__hr" />
-
-<section class="top-ten__container">
-  <% albums = Work.sort_works("album")%>
-  <% books = Work.sort_works("book")%>
-  <% movies = Work.sort_works("movie")%>
-
-  <section class="top-ten__list-container">
-    <h2 class="top-ten__header"> Top Movies </h2>
-    <% if movies.instance_of? String %>
-      <p><%= movies %></p>
+  <section class="spotlight">
+    <%if Work.spotlight.instance_of? String%>
+      <h2 class="spotlight__header">
+        <% media_error = Work.spotlight %>
+        <span> <%= media_error%> </span>
+      </h2>
     <% else %>
-      <ul class="list-group top-ten__list">
-        <% movies[0..9].each do |movie|%>
-          <li class="list-group-item">
-            <h4>
-              <%=link_to "#{movie.title}", work_path(movie.id)%> 
-              <small > by <%=movie.creator%></small>
-            </h4>
-            <p><%=movie.votes.length%> votes</p>
-          <li>
-        <% end %>
-      </ul>
+      <h2 class="spotlight__header">
+        <span class="spotlight__header--prefix"> Media Spotlight: </span>
+        <%= link_to "#{Work.spotlight.title}", work_path(Work.spotlight.id), class: "spotlight__link-to" %> by <%= Work.spotlight.creator%>
+      </h2>
+      <p class="spotlight__description"> 
+        <%= Work.spotlight.votes.length%> votes - <%= Work.spotlight.description%>
+      </p>
     <% end %>
   </section>
 
-  <section class="top-ten__list-container">
-    <h2 class="top-ten__header"> Top Albums </h2>
-    <% if albums.instance_of? String %>
-      <p><%= albums %></p>
-    <% else %>
-      <ul class="list-group top-ten__list">
-        <% albums[0..9].each do |album|%>
-          <li class="list-group-item">
-            <h4>
-              <%=link_to "#{album.title}", work_path(album.id)%> 
-              <small > by <%=album.creator%></small>
-            </h4>
-            <p><%=album.votes.length%> votes</p>
-          <li>
-        <% end %>
-      </ul>
-    <% end %>
-  </section>
+  <hr class="root__hr" />
 
-  <section class="top-ten__list-container">
-    <h2 class="top-ten__header"> Top Books </h2>
-    <% if books.instance_of? String %>
-      <p><%= books %></p>
-    <% else %>
-      <ul class="list-group top-ten__list">
-        <% books[0..9].each do |book|%>
-          <li class="list-group-item">
-            <h4>
-              <%=link_to "#{book.title}", work_path(book.id)%> 
-              <small > by <%=book.creator%></small>
-            </h4>
-            <p><%=book.votes.length%> votes</p>
-          <li>
-        <% end %>
-      </ul>
-    <% end %>
+  <section class="top-ten__container">
+    <% albums = Work.sort_works("album")%>
+    <% books = Work.sort_works("book")%>
+    <% movies = Work.sort_works("movie")%>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header"> Top Movies </h2>
+      <% if movies.instance_of? String %>
+        <p><%= movies %></p>
+      <% else %>
+        <ul class="list-group top-ten__list">
+          <% movies[0..9].each do |movie|%>
+            <li class="list-group-item">
+              <h4>
+                <%=link_to "#{movie.title}", work_path(movie.id)%> 
+                <small > by <%=movie.creator%></small>
+              </h4>
+              <p><%=movie.votes.length%> votes</p>
+            <li>
+          <% end %>
+        </ul>
+      <% end %>
+    </section>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header"> Top Albums </h2>
+      <% if albums.instance_of? String %>
+        <p><%= albums %></p>
+      <% else %>
+        <ul class="list-group top-ten__list">
+          <% albums[0..9].each do |album|%>
+            <li class="list-group-item">
+              <h4>
+                <%=link_to "#{album.title}", work_path(album.id)%> 
+                <small > by <%=album.creator%></small>
+              </h4>
+              <p><%=album.votes.length%> votes</p>
+            <li>
+          <% end %>
+        </ul>
+      <% end %>
+    </section>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header"> Top Books </h2>
+      <% if books.instance_of? String %>
+        <p><%= books %></p>
+      <% else %>
+        <ul class="list-group top-ten__list">
+          <% books[0..9].each do |book|%>
+            <li class="list-group-item">
+              <h4>
+                <%=link_to "#{book.title}", work_path(book.id)%> 
+                <small > by <%=book.creator%></small>
+              </h4>
+              <p><%=book.votes.length%> votes</p>
+            <li>
+          <% end %>
+        </ul>
+      <% end %>
+    </section>
   </section>
-</section>
 </main>
